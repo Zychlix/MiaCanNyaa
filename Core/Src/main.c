@@ -34,12 +34,12 @@
 #define CAN_EGV_ACCEL_VAR_ID 0x201
 #define CAN_EGV_CMD_VAR_ID 0x301
 #define CAN_EGV_SYNC_ALL_ID 0x80
+
+#define CAN_VAR_STAT
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
@@ -67,6 +67,10 @@ uint16_t swap_endianness(uint16_t value)
 
 }
 
+
+/* USER CODE END PM */
+
+uint8_t var_ready = 0;
 
 typedef struct CAN_EGV_Accel_VAR
 {
@@ -108,6 +112,7 @@ void can_send_egv_sync_all(CAN_EGV_SYNC_ALL_t * frame)
 void can_send_egv_accel_var(CAN_EGV_Accel_VAR_t * frame)
 {
     CAN_TxHeaderTypeDef carrier = {0};
+
     carrier.StdId = CAN_EGV_ACCEL_VAR_ID;
     carrier.DLC = sizeof (CAN_EGV_Accel_VAR_t);
     HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)frame,NULL);
@@ -122,14 +127,33 @@ void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t * frame)
 
 }
 
-volatile CAN_EGV_Accel_VAR_t egv_accel_frame;
-volatile CAN_EGV_SYNC_ALL_t egv_sync_frame;
-volatile CAN_EGV_Cmd_VAR_t egv_var_frame;
-
 uint16_t get_throttle()
 {
-
+    uint32_t reading = HAL_ADC_GetValue(&hadc1);
+    return (uint16_t)(reading>>4);
 }
+
+void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
+{
+    if(var_ready) {
+        // egv_accel_frame.accelerator_set_point = 0;
+        frame->footswitch = 1; //?
+        frame->regen_max = 0;
+        frame->forward = 1;
+        frame->accelerator_set_point = get_throttle();
+    } else
+    {
+        frame->footswitch = 0; //?
+        frame->regen_max = 0;
+        frame->forward = 0;
+        frame->accelerator_set_point = 0;
+    }
+}
+volatile CAN_EGV_Accel_VAR_t egv_accel_frame ={0};
+
+volatile CAN_EGV_SYNC_ALL_t egv_sync_frame ={0};
+
+volatile CAN_EGV_Cmd_VAR_t egv_var_frame ={0};
 
 /* USER CODE END PV */
 
@@ -149,6 +173,8 @@ static void MX_TIM6_Init(void);
 /* USER CODE BEGIN 0 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
+
+    update_accel_pedal(&egv_var_frame);
     can_send_egv_sync_all(&egv_sync_frame);
     can_send_egv_accel_var(&egv_accel_frame);
     can_send_egv_cmd_var(&can_send_egv_cmd_var);
@@ -187,9 +213,17 @@ int main(void)
 
   egv_accel_frame;
 
+  egv_accel_frame.accelerator_set_point = 0;
+  egv_accel_frame.footswitch = 0; //?
+  egv_accel_frame.regen_max = 0;
+  egv_accel_frame.forward = 0;
+
   egv_sync_frame.state =0xFF;
 
-  egv_var_frame;
+  egv_var_frame.current_limit;
+  egv_var_frame.max_torque_ratio;
+  egv_var_frame.motor_command;
+  egv_var_frame.regen_limit;
 
   /* USER CODE END SysInit */
 
@@ -201,12 +235,8 @@ int main(void)
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
 
-    CAN_TxHeaderTypeDef frame = {0};
-    frame.StdId = 123;
-    frame.DLC = 3;
 
 
-    //HAL_TIM_Base_Start(&htim6);
     __HAL_RCC_TIM6_CLK_ENABLE();
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_NVIC_EnableIRQ(TIM6_IRQn);
