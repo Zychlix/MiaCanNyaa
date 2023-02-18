@@ -107,18 +107,29 @@ void can_send_egv_sync_all(CAN_EGV_SYNC_ALL_t * frame)
 
 void can_send_egv_accel_var(CAN_EGV_Accel_VAR_t * frame)
 {
-
+    CAN_TxHeaderTypeDef carrier = {0};
+    carrier.StdId = CAN_EGV_ACCEL_VAR_ID;
+    carrier.DLC = sizeof (CAN_EGV_Accel_VAR_t);
+    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)frame,NULL);
 }
 
-void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t)
+void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t * frame)
 {
-   // HAL_CAN_AddTxMessage(&hcan1,&frame,"abc",NULL);
+    CAN_TxHeaderTypeDef carrier = {0};
+    carrier.StdId = CAN_EGV_CMD_VAR_ID;
+    carrier.DLC = sizeof (CAN_EGV_Cmd_VAR_t);
+    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)frame,NULL);
+
 }
 
 volatile CAN_EGV_Accel_VAR_t egv_accel_frame;
 volatile CAN_EGV_SYNC_ALL_t egv_sync_frame;
 volatile CAN_EGV_Cmd_VAR_t egv_var_frame;
 
+uint16_t get_throttle()
+{
+
+}
 
 /* USER CODE END PV */
 
@@ -139,6 +150,8 @@ static void MX_TIM6_Init(void);
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
     can_send_egv_sync_all(&egv_sync_frame);
+    can_send_egv_accel_var(&egv_accel_frame);
+    can_send_egv_cmd_var(&can_send_egv_cmd_var);
 
 }
 /* USER CODE END 0 */
@@ -169,7 +182,7 @@ int main(void)
 
   egv_accel_frame;
 
-  egv_sync_frame;
+  egv_sync_frame.state =0xFF;
 
   egv_var_frame;
 
@@ -194,6 +207,9 @@ int main(void)
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_NVIC_EnableIRQ(TIM6_IRQn);
     HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
+
+    __HAL_RCC_ADC_CLK_ENABLE();
+    HAL_ADC_Start(&hadc1);
 //    HAL_CAN
     //HAL_CAN_Init()
   /* USER CODE END 2 */
@@ -205,11 +221,17 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//      HAL_Delay(1000);
+     HAL_Delay(1000);
 //      HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
 //      HAL_CAN_AddTxMessage(&hcan1,&frame,"abc",NULL);
+  uint32_t value = HAL_ADC_GetValue(&hadc1);
+      HAL_ADC_Start(&hadc1);
+
+      egv_accel_frame.accelerator_set_point = (uint16_t)value;
+
   }
   /* USER CODE END 3 */
+
 }
 
 /**
@@ -376,7 +398,7 @@ static void MX_TIM6_Init(void)
   htim6.Instance = TIM6;
   htim6.Init.Prescaler = 6400;
   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim6.Init.Period = 10000;
+  htim6.Init.Period = 10000; // every 10ms
   htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
   {
