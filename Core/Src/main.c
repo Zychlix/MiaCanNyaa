@@ -31,6 +31,9 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define CAN_EGV_ACCEL_VAR_ID 0x201
+#define CAN_EGV_CMD_VAR_ID 0x301
+#define CAN_EGV_SYNC_ALL_ID 0x80
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -49,6 +52,18 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
+
+uint16_t swap_endianness(uint16_t value)
+{
+    uint16_t ret_val;
+    uint8_t lsb, msb;
+    lsb = value & 0x00FF;
+    msb = value & 0xFF00;
+    ret_val = (lsb << 16) + (msb >> 16);
+
+    return ret_val;
+
+}
 
 
 typedef struct CAN_EGV_Accel_VAR
@@ -79,6 +94,22 @@ typedef struct CAN_EGV_SYNC_ALL
     uint8_t state;
 } CAN_EGV_SYNC_ALL_t;
 
+void can_send_egv_sync_all(CAN_EGV_SYNC_ALL_t * frame)
+{
+
+}
+
+void can_send_egv_accel_var(CAN_EGV_Accel_VAR_t * frame)
+{
+
+}
+
+void can_send_egv_cmd_var(void)
+{
+
+}
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,8 +128,14 @@ static void MX_TIM6_Init(void);
 /* USER CODE BEGIN 0 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
+    CAN_TxHeaderTypeDef frame = {0};
+    frame.StdId=0x550;
+    frame.DLC = 2;
     HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
-    HAL_GPIO_WritePin(LD3_GPIO_Port,LD3_Pin,1);
+    HAL_GPIO_WritePin(LD3_GPIO_Port,LD3_Pin,GPIO_PIN_RESET);
+
+    HAL_CAN_AddTxMessage(&hcan1,&frame,"abc",NULL);
+
 }
 /* USER CODE END 0 */
 
@@ -145,7 +182,8 @@ int main(void)
     HAL_CAN_Start(&hcan1);
     __HAL_RCC_TIM6_CLK_ENABLE();
     HAL_TIM_Base_Start_IT(&htim6);
-   HAL_NVIC_EnableIRQ(TIM6_IRQn);
+    HAL_NVIC_EnableIRQ(TIM6_IRQn);
+    HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
 //    HAL_CAN
     //HAL_CAN_Init()
   /* USER CODE END 2 */
@@ -157,9 +195,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-      HAL_Delay(1000);
-     HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
-      HAL_CAN_AddTxMessage(&hcan1,&frame,"abc",NULL);
+//      HAL_Delay(1000);
+//      HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
+//      HAL_CAN_AddTxMessage(&hcan1,&frame,"abc",NULL);
   }
   /* USER CODE END 3 */
 }
