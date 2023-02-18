@@ -154,6 +154,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
     can_send_egv_cmd_var(&can_send_egv_cmd_var);
 
 }
+
+void HAL_CAN_RxFIFO0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+{
+    //HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
+}
 /* USER CODE END 0 */
 
 /**
@@ -202,11 +207,26 @@ int main(void)
 
 
     //HAL_TIM_Base_Start(&htim6);
-    HAL_CAN_Start(&hcan1);
     __HAL_RCC_TIM6_CLK_ENABLE();
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_NVIC_EnableIRQ(TIM6_IRQn);
     HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
+
+    CAN_FilterTypeDef sFilterConfig;
+
+    sFilterConfig.FilterFIFOAssignment=CAN_FILTER_FIFO0; //set fifo assignment
+    sFilterConfig.FilterIdHigh=0x245<<5; //the ID that the filter looks for (switch this for the other microcontroller)
+    sFilterConfig.FilterIdLow=0;
+    sFilterConfig.FilterMaskIdHigh=0;
+    sFilterConfig.FilterMaskIdLow=0;
+    sFilterConfig.FilterScale=CAN_FILTERSCALE_32BIT; //set filter scale
+    sFilterConfig.FilterActivation=ENABLE;
+
+    HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig); //configure CAN filter
+
+//
+    HAL_CAN_Start(&hcan1);
+    HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
 
     __HAL_RCC_ADC_CLK_ENABLE();
     HAL_ADC_Start(&hadc1);
@@ -228,6 +248,7 @@ int main(void)
       HAL_ADC_Start(&hadc1);
 
       egv_accel_frame.accelerator_set_point = (uint16_t)value;
+
 
   }
   /* USER CODE END 3 */
@@ -357,10 +378,10 @@ static void MX_CAN1_Init(void)
 
   /* USER CODE END CAN1_Init 1 */
   hcan1.Instance = CAN1;
-  hcan1.Init.Prescaler = 8;
+  hcan1.Init.Prescaler = 4;
   hcan1.Init.Mode = CAN_MODE_NORMAL;
   hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan1.Init.TimeSeg1 = CAN_BS1_4TQ;
+  hcan1.Init.TimeSeg1 = CAN_BS1_12TQ;
   hcan1.Init.TimeSeg2 = CAN_BS2_3TQ;
   hcan1.Init.TimeTriggeredMode = DISABLE;
   hcan1.Init.AutoBusOff = DISABLE;
