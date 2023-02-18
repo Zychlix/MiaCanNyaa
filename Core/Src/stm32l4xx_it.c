@@ -205,7 +205,12 @@ void SysTick_Handler(void)
 void CAN1_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN CAN1_RX0_IRQn 0 */
+  //HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
+    if(HAL_CAN_GetRxFifoFillLevel(&hcan1,CAN_RX_FIFO0)!=0)
+    {
+        HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
 
+    }
   /* USER CODE END CAN1_RX0_IRQn 0 */
   HAL_CAN_IRQHandler(&hcan1);
   /* USER CODE BEGIN CAN1_RX0_IRQn 1 */
@@ -237,7 +242,8 @@ void TIM6_DAC_IRQHandler(void)
   /* USER CODE END TIM6_DAC_IRQn 0 */
   HAL_TIM_IRQHandler(&htim6);
   /* USER CODE BEGIN TIM6_DAC_IRQn 1 */
-    HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
+    //HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
+    //
 
   /* USER CODE END TIM6_DAC_IRQn 1 */
 }
