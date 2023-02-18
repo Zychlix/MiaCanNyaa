@@ -53,6 +53,8 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 
 
+
+
 uint16_t swap_endianness(uint16_t value)
 {
     uint16_t ret_val;
@@ -96,6 +98,10 @@ typedef struct CAN_EGV_SYNC_ALL
 
 void can_send_egv_sync_all(CAN_EGV_SYNC_ALL_t * frame)
 {
+    CAN_TxHeaderTypeDef carrier = {0};
+    carrier.StdId = CAN_EGV_SYNC_ALL_ID;
+    carrier.DLC = sizeof (CAN_EGV_SYNC_ALL_t);
+    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char*)frame,NULL);
 
 }
 
@@ -104,10 +110,14 @@ void can_send_egv_accel_var(CAN_EGV_Accel_VAR_t * frame)
 
 }
 
-void can_send_egv_cmd_var(void)
+void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t)
 {
-
+   // HAL_CAN_AddTxMessage(&hcan1,&frame,"abc",NULL);
 }
+
+volatile CAN_EGV_Accel_VAR_t egv_accel_frame;
+volatile CAN_EGV_SYNC_ALL_t egv_sync_frame;
+volatile CAN_EGV_Cmd_VAR_t egv_var_frame;
 
 
 /* USER CODE END PV */
@@ -128,13 +138,7 @@ static void MX_TIM6_Init(void);
 /* USER CODE BEGIN 0 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
-    CAN_TxHeaderTypeDef frame = {0};
-    frame.StdId=0x550;
-    frame.DLC = 2;
-    HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
-    HAL_GPIO_WritePin(LD3_GPIO_Port,LD3_Pin,GPIO_PIN_RESET);
-
-    HAL_CAN_AddTxMessage(&hcan1,&frame,"abc",NULL);
+    can_send_egv_sync_all(&egv_sync_frame);
 
 }
 /* USER CODE END 0 */
@@ -162,6 +166,12 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+
+  egv_accel_frame;
+
+  egv_sync_frame;
+
+  egv_var_frame;
 
   /* USER CODE END SysInit */
 
