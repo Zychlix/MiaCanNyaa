@@ -67,6 +67,10 @@ typedef struct CAN_EGV_Accel_VAR
 
 typedef struct CAN_EGV_Cmd_VAR
 {
+    int16_t current_limit; //0 to 500
+    int16_t regen_limit;
+    uint16_t max_torque_ratio;
+    uint16_t motor_command;
 
 } CAN_EGV_Cmd_VAR_t;
 
