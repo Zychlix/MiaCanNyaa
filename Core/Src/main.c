@@ -76,13 +76,13 @@ typedef struct CAN_EGV_Accel_VAR
 {
     uint16_t accelerator_set_point;//little endian
     uint16_t regen_max;
-    int forward : 1 ;
-    int reverse : 1 ;
-    int footbrake : 1;
-    int DS1 : 1 ;
-    int footswitch :1;
-    int DS2 : 1;
-    int unused :2;
+    unsigned int forward : 1 ;
+    unsigned int reverse : 1 ;
+    unsigned int footbrake : 1;
+    unsigned int DS1 : 1 ;
+    unsigned int footswitch :1;
+    unsigned int DS2 : 1;
+    unsigned int unused :2;
 
 } CAN_EGV_Accel_VAR_t;
 
@@ -97,7 +97,15 @@ typedef struct CAN_EGV_Cmd_VAR
 
 typedef struct CAN_EGV_SYNC_ALL
 {
-    uint8_t state;
+    int bms : 1;
+    int var :1;
+    int abs :1;
+    int immo :1;
+    int charger :1;
+    int bvs:1;
+    int unused:1;
+    int diag:1;
+
 } CAN_EGV_SYNC_ALL_t;
 
 void can_send_egv_sync_all(CAN_EGV_SYNC_ALL_t * frame)
@@ -129,18 +137,29 @@ void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t * frame)
 
 uint16_t get_throttle()
 {
+    HAL_ADC_Start(&hadc1);
     uint32_t reading = HAL_ADC_GetValue(&hadc1);
     return (uint16_t)(reading>>4);
 }
 
 void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
 {
-    if(var_ready) {
+    int direction_forward = (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4)== GPIO_PIN_RESET);
+
+    frame->accelerator_set_point = get_throttle();
+    if(var_ready && frame->accelerator_set_point > 70) {
         // egv_accel_frame.accelerator_set_point = 0;
         frame->footswitch = 1; //?
         frame->regen_max = 0;
-        frame->forward = 1;
-        frame->accelerator_set_point = get_throttle();
+        if(direction_forward)
+        {
+            frame->reverse = 0;
+            frame->forward = 1;
+        } else
+        {
+            frame->reverse=1;
+            frame->forward = 0;
+        }
     } else
     {
         frame->footswitch = 0; //?
@@ -154,6 +173,12 @@ volatile CAN_EGV_Accel_VAR_t egv_accel_frame ={0};
 volatile CAN_EGV_SYNC_ALL_t egv_sync_frame ={0};
 
 volatile CAN_EGV_Cmd_VAR_t egv_var_frame ={0};
+
+void diagnostics_print()
+{
+    printf("Accel frame 0x201: \n");
+    printf("accel setpoint: %d \nfootswitch: %d \nforward: %d \n\n" ,egv_accel_frame.accelerator_set_point, egv_accel_frame.footswitch, egv_accel_frame.forward);
+}
 
 /* USER CODE END PV */
 
@@ -174,7 +199,7 @@ static void MX_TIM6_Init(void);
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
 
-    update_accel_pedal(&egv_accel_frame_frame);
+    update_accel_pedal(&egv_accel_frame);
     can_send_egv_sync_all(&egv_sync_frame);
     can_send_egv_accel_var(&egv_accel_frame);
     can_send_egv_cmd_var(&can_send_egv_cmd_var);
@@ -230,12 +255,13 @@ int main(void)
   egv_accel_frame.regen_max = 0;
   egv_accel_frame.forward = 0;
 
-  egv_sync_frame.state =0xFF;
+  egv_sync_frame.bms = 1;
+  egv_sync_frame.var = 1;
 
-  egv_var_frame.current_limit;
-  egv_var_frame.max_torque_ratio;
-  egv_var_frame.motor_command;
-  egv_var_frame.regen_limit;
+  egv_var_frame.current_limit = 2640;
+  egv_var_frame.max_torque_ratio =1000;
+  egv_var_frame.motor_command = 0;
+  egv_var_frame.regen_limit = 0;
 
   /* USER CODE END SysInit */
 
@@ -282,10 +308,11 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+    diagnostics_print();
     /* USER CODE BEGIN 3 */
      HAL_Delay(1000);
-     printf("Hello!\n");
-     printf("%d \n",egv_accel_frame.accelerator_set_point);
+//
+//     printf("%d \n",egv_accel_frame.accelerator_set_point);
 
   }
   /* USER CODE END 3 */
@@ -456,7 +483,7 @@ static void MX_TIM6_Init(void)
   htim6.Instance = TIM6;
   htim6.Init.Prescaler = 6400;
   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim6.Init.Period = 10000; // every 10ms
+  htim6.Init.Period = 100; // every 10ms
   htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
   {
@@ -533,9 +560,17 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD3_GPIO_Port, &GPIO_InitStruct);
 
+  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */
+
+
 
 /* USER CODE END 4 */
 
