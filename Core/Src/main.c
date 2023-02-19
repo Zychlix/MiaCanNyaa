@@ -61,7 +61,7 @@ uint16_t swap_endianness(uint16_t value)
     uint8_t lsb, msb;
     lsb = value & 0x00FF;
     msb = value & 0xFF00;
-    ret_val = (lsb << 16) + (msb >> 16);
+    ret_val = (lsb << 8) + (msb >> 8);
 
     return ret_val;
 
@@ -103,14 +103,7 @@ typedef struct CAN_EGV_Cmd_VAR
 
 typedef struct CAN_EGV_SYNC_ALL
 {
-    int bms : 1;
-    int var :1;
-    int abs :1;
-    int immo :1;
-    int chargervar_rea :1;
-    int bvs:1;
-    int unused:1;
-    int diag:1;
+uint8_t status;
 
 } CAN_EGV_SYNC_ALL_t;
 
@@ -158,7 +151,7 @@ void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
     if(var_ready && frame->accelerator_set_point > 70) {
         frame->accelerator_set_point = 250;
         frame->footswitch = 1; //?
-        frame->regen_max = 20;
+        frame->regen_max = 0;
         frame->footbrake =0;
         if(direction_forward)
         {
@@ -191,6 +184,7 @@ void diagnostics_print()
 {
     printf("Var stat: %d\nvar status %d:", var_stat.motor_speed, var_stat.status_word);
     printf("Accel frame 0x201: \n");
+    printf("Accel var values %d", egv_accel_frame);
     printf("accel setpoint: %d \nfootswitch: %d \nforward: %d \n\n" ,egv_accel_frame.accelerator_set_point, egv_accel_frame.footswitch, egv_accel_frame.forward);
 }
 
@@ -268,9 +262,7 @@ int main(void)
   egv_accel_frame.regen_max = 0;
   egv_accel_frame.forward = 0;
 
-  egv_sync_frame.bms = 1;
-  egv_sync_frame.var = 1;
-
+  egv_sync_frame.status =0xff;
   egv_var_frame.current_limit = 0;
   //egv_var_frame.current_limit = swap_endianness(egv_var_frame.current_limit);
   egv_var_frame.max_torque_ratio =0;
