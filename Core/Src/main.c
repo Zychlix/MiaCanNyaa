@@ -70,7 +70,7 @@ uint16_t swap_endianness(uint16_t value)
 
 /* USER CODE END PM */
 
-uint8_t var_ready = 0;
+volatile uint8_t var_ready = 1;
 
 typedef struct CAN_EGV_Accel_VAR
 {
@@ -174,7 +174,7 @@ static void MX_TIM6_Init(void);
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
 
-    update_accel_pedal(&egv_var_frame);
+    update_accel_pedal(&egv_accel_frame_frame);
     can_send_egv_sync_all(&egv_sync_frame);
     can_send_egv_accel_var(&egv_accel_frame);
     can_send_egv_cmd_var(&can_send_egv_cmd_var);
@@ -285,7 +285,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
      HAL_Delay(1000);
      printf("Hello!\n");
-     printf("%f \n",4.5);
+     printf("%d \n",egv_accel_frame.accelerator_set_point);
 
   }
   /* USER CODE END 3 */
