@@ -72,13 +72,13 @@ uint16_t swap_endianness(uint16_t value)
 
 volatile uint8_t var_ready = 0;
 
-typedef struct stat
+typedef struct __attribute__((__packed__)) stat
 {
     int32_t motor_speed;
     int16_t motor_torque;
     int16_t status_word;
 }stat_t;
-typedef struct CAN_EGV_Accel_VAR
+typedef struct  __attribute__((__packed__)) CAN_EGV_Accel_VAR
 {
     uint16_t accelerator_set_point;//little endian
     uint16_t regen_max;
@@ -92,7 +92,7 @@ typedef struct CAN_EGV_Accel_VAR
 
 } CAN_EGV_Accel_VAR_t;
 
-typedef struct CAN_EGV_Cmd_VAR
+typedef struct __attribute__((__packed__))  CAN_EGV_Cmd_VAR
 {
     int16_t current_limit; //0 to 500
     int16_t regen_limit;
@@ -131,7 +131,21 @@ void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t * frame)
     CAN_TxHeaderTypeDef carrier = {0};
     carrier.StdId = CAN_EGV_CMD_VAR_ID;
     carrier.DLC = sizeof (CAN_EGV_Cmd_VAR_t);
-    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)frame,NULL);
+    uint8_t crap[8];
+    crap[0] = 0xc8; //max current
+    crap[1] = 0x00; //max current
+    crap[2] = 0xec; //
+    crap[3] = 0xff; //
+    crap[4] = 0xe8; // torque lsb
+    crap[5] = 0x03; // torque msb
+    crap[6] = 0; // motorniczy msb?
+    crap[7] = 0; //motorniczy lsb?
+    frame->regen_limit = swap_endianness(    frame->regen_limit);
+    frame->max_torque_ratio = swap_endianness(frame->max_torque_ratio);
+    frame->current_limit = swap_endianness(frame->current_limit);
+    frame->motor_command = 0;
+    frame->motor_command = swap_endianness(frame->current_limit);
+    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)&frame,NULL);
 
 }
 
@@ -149,8 +163,9 @@ void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
     frame->accelerator_set_point = get_throttle();
 
     if(var_ready && frame->accelerator_set_point > 70) {
-        frame->accelerator_set_point = 250;
+        //frame->accelerator_set_point = 250;
         frame->footswitch = 1; //?
+        frame->unused = 0;
         frame->regen_max = 0;
         frame->footbrake =0;
         if(direction_forward)
@@ -263,6 +278,7 @@ int main(void)
   egv_accel_frame.forward = 0;
 
   egv_sync_frame.status =0xff;
+
   egv_var_frame.current_limit = 0;
   //egv_var_frame.current_limit = swap_endianness(egv_var_frame.current_limit);
   egv_var_frame.max_torque_ratio =0;
@@ -321,7 +337,7 @@ int main(void)
     {
         var_ready =1;
         egv_var_frame.current_limit = 200; //2640
-        egv_var_frame.regen_limit =20;
+        egv_var_frame.regen_limit =-20;
         //egv_var_frame.current_limit = swap_endianness(egv_var_frame.current_limit);
         egv_var_frame.max_torque_ratio =1000;
         egv_accel_frame.footswitch=1;
