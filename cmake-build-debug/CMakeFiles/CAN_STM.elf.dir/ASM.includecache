@@ -6,5 +6,5 @@
 
 #IncludeRegexTransform: 
 
-/home/michal/CAN_STM/Core/Startup/startup_stm32l432kcux.s
+/home/zychlix/MiaCanNyaa/Core/Startup/startup_stm32l432kcux.s
 

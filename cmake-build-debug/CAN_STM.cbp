@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/michal/CAN_STM/cmake-build-debug"/>
+				<Option working_dir="/home/zychlix/MiaCanNyaa/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="CAN_STM.elf">
-				<Option output="/home/michal/CAN_STM/cmake-build-debug/CAN_STM.elf" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/michal/CAN_STM/cmake-build-debug"/>
+				<Option output="/home/zychlix/MiaCanNyaa/cmake-build-debug/CAN_STM.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/zychlix/MiaCanNyaa/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -27,28 +27,28 @@
 					<Add option="-DDEBUG"/>
 					<Add option="-DUSE_HAL_DRIVER"/>
 					<Add option="-DSTM32L432xx"/>
-					<Add directory="/home/michal/CAN_STM/Core/Inc"/>
-					<Add directory="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc"/>
-					<Add directory="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy"/>
-					<Add directory="/home/michal/CAN_STM/Drivers/CMSIS/Device/ST/STM32L4xx/Include"/>
-					<Add directory="/home/michal/CAN_STM/Drivers/CMSIS/Include"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/include/c++/12.2.0"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/include/c++/12.2.0/arm-none-eabi"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/include/c++/12.2.0/backward"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/include"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/include-fixed"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/include"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Core/Inc"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Device/ST/STM32L4xx/Include"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/include/c++/12.2.1"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/include/c++/12.2.1/arm-none-eabi"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/include/c++/12.2.1/backward"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/include"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/include-fixed"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 CAN_STM.elf"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 CAN_STM.elf"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="CAN_STM.elf/fast">
-				<Option output="/home/michal/CAN_STM/cmake-build-debug/CAN_STM.elf" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/michal/CAN_STM/cmake-build-debug"/>
+				<Option output="/home/zychlix/MiaCanNyaa/cmake-build-debug/CAN_STM.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/zychlix/MiaCanNyaa/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -56,368 +56,368 @@
 					<Add option="-DDEBUG"/>
 					<Add option="-DUSE_HAL_DRIVER"/>
 					<Add option="-DSTM32L432xx"/>
-					<Add directory="/home/michal/CAN_STM/Core/Inc"/>
-					<Add directory="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc"/>
-					<Add directory="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy"/>
-					<Add directory="/home/michal/CAN_STM/Drivers/CMSIS/Device/ST/STM32L4xx/Include"/>
-					<Add directory="/home/michal/CAN_STM/Drivers/CMSIS/Include"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/include/c++/12.2.0"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/include/c++/12.2.0/arm-none-eabi"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/include/c++/12.2.0/backward"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/include"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/include-fixed"/>
-					<Add directory="/usr/lib/gcc/arm-none-eabi/12.2.0/../../../../arm-none-eabi/include"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Core/Inc"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Device/ST/STM32L4xx/Include"/>
+					<Add directory="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/include/c++/12.2.1"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/include/c++/12.2.1/arm-none-eabi"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/include/c++/12.2.1/backward"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/include"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/include-fixed"/>
+					<Add directory="/usr/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 CAN_STM.elf/fast"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 CAN_STM.elf/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/michal/CAN_STM/cmake-build-debug"/>
+				<Option working_dir="/home/zychlix/MiaCanNyaa/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/michal/CAN_STM/cmake-build-debug"/>
+				<Option working_dir="/home/zychlix/MiaCanNyaa/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j20 -f &quot;/home/michal/CAN_STM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/zychlix/MiaCanNyaa/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/michal/CAN_STM/Core/Inc/main.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Inc/main.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Inc/stm32l4xx_hal_conf.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Inc/stm32l4xx_hal_conf.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Inc/stm32l4xx_it.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Inc/stm32l4xx_it.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Src/main.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Src/main.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Src/mia.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Src/mia.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Src/mia.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Src/mia.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Src/stm32l4xx_hal_msp.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Src/stm32l4xx_hal_msp.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Src/stm32l4xx_it.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Src/stm32l4xx_it.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Src/syscalls.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Src/syscalls.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Src/sysmem.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Src/sysmem.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Src/system_stm32l4xx.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Src/system_stm32l4xx.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Core/Startup/startup_stm32l432kcux.s">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Core/Startup/startup_stm32l432kcux.s">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Device/ST/STM32L4xx/LICENSE.txt">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Device/ST/STM32L4xx/LICENSE.txt">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Device/ST/STM32L4xx/License.md">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Device/ST/STM32L4xx/License.md">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/cmsis_armcc.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/cmsis_armcc.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/cmsis_armclang.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/cmsis_armclang.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/cmsis_armclang_ltm.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/cmsis_armclang_ltm.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/cmsis_compiler.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/cmsis_compiler.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/cmsis_gcc.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/cmsis_gcc.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/cmsis_iccarm.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/cmsis_iccarm.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/cmsis_version.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/cmsis_version.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_armv81mml.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_armv81mml.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_armv8mbl.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_armv8mbl.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_armv8mml.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_armv8mml.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_cm0.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_cm0.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_cm0plus.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_cm0plus.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_cm1.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_cm1.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_cm23.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_cm23.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_cm3.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_cm3.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_cm33.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_cm33.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_cm35p.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_cm35p.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_cm4.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_cm4.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_cm7.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_cm7.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_sc000.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_sc000.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/core_sc300.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/core_sc300.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/mpu_armv7.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/mpu_armv7.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/mpu_armv8.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/mpu_armv8.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/Include/tz_context.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/tz_context.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/CMSIS/LICENSE.txt">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/CMSIS/LICENSE.txt">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_can.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_can.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma_ex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma_ex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio_ex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio_ex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc_ex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc_ex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_adc.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_adc.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_bus.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_bus.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_cortex.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_cortex.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_crs.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_crs.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_dma.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_dma.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_dmamux.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_dmamux.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_exti.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_exti.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_gpio.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_gpio.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_lpuart.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_lpuart.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_pwr.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_pwr.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_rcc.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_rcc.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_system.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_system.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_tim.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_tim.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usart.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usart.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_utils.h">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_utils.h">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/LICENSE.txt">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/LICENSE.txt">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/License.md">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/License.md">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc_ex.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc_ex.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_can.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_can.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c">
+		<Unit filename="/home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/STM32L432KCUX_FLASH.ld">
+		<Unit filename="/home/zychlix/MiaCanNyaa/STM32L432KCUX_FLASH.ld">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
-		<Unit filename="/home/michal/CAN_STM/CMakeLists.txt">
+		<Unit filename="/home/zychlix/MiaCanNyaa/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

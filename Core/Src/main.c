@@ -70,8 +70,14 @@ uint16_t swap_endianness(uint16_t value)
 
 /* USER CODE END PM */
 
-volatile uint8_t var_ready = 1;
+volatile uint8_t var_ready = 0;
 
+typedef struct stat
+{
+    int32_t motor_speed;
+    int16_t motor_torque;
+    int16_t status_word;
+}stat_t;
 typedef struct CAN_EGV_Accel_VAR
 {
     uint16_t accelerator_set_point;//little endian
@@ -101,7 +107,7 @@ typedef struct CAN_EGV_SYNC_ALL
     int var :1;
     int abs :1;
     int immo :1;
-    int charger :1;
+    int chargervar_rea :1;
     int bvs:1;
     int unused:1;
     int diag:1;
@@ -123,6 +129,7 @@ void can_send_egv_accel_var(CAN_EGV_Accel_VAR_t * frame)
 
     carrier.StdId = CAN_EGV_ACCEL_VAR_ID;
     carrier.DLC = sizeof (CAN_EGV_Accel_VAR_t);
+    //frame->accelerator_set_point = swap_endianness(frame->accelerator_set_point);
     HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)frame,NULL);
 }
 
@@ -147,10 +154,12 @@ void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
     int direction_forward = (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4)== GPIO_PIN_RESET);
 
     frame->accelerator_set_point = get_throttle();
+
     if(var_ready && frame->accelerator_set_point > 70) {
-        // egv_accel_frame.accelerator_set_point = 0;
+        frame->accelerator_set_point = 250;
         frame->footswitch = 1; //?
-        frame->regen_max = 0;
+        frame->regen_max = 20;
+        frame->footbrake =0;
         if(direction_forward)
         {
             frame->reverse = 0;
@@ -163,8 +172,9 @@ void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
     } else
     {
         frame->footswitch = 0; //?
-        frame->regen_max = 0;
+//        frame->regen_max = 0;
         frame->forward = 0;
+        frame->reverse = 0;
         frame->accelerator_set_point = 0;
     }
 }
@@ -174,14 +184,17 @@ volatile CAN_EGV_SYNC_ALL_t egv_sync_frame ={0};
 
 volatile CAN_EGV_Cmd_VAR_t egv_var_frame ={0};
 
+/* Private user code ---------------------------------------------------------*/
+stat_t var_stat;
+
 void diagnostics_print()
 {
+    printf("Var stat: %d\nvar status %d:", var_stat.motor_speed, var_stat.status_word);
     printf("Accel frame 0x201: \n");
     printf("accel setpoint: %d \nfootswitch: %d \nforward: %d \n\n" ,egv_accel_frame.accelerator_set_point, egv_accel_frame.footswitch, egv_accel_frame.forward);
 }
 
 /* USER CODE END PV */
-
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
@@ -189,12 +202,12 @@ static void MX_USART2_UART_Init(void);
 static void MX_CAN1_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM6_Init(void);
-/* USER CODE BEGIN PFP */
 
+
+/* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
-/* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 {
@@ -221,7 +234,6 @@ int __io_putchar(int ch)
     HAL_UART_Transmit(&huart2, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
     return 1;
 }
-
 /* USER CODE END 0 */
 
 /**
@@ -251,6 +263,7 @@ int main(void)
   egv_accel_frame;
 
   egv_accel_frame.accelerator_set_point = 0;
+  egv_accel_frame.footbrake=0;
   egv_accel_frame.footswitch = 0; //?
   egv_accel_frame.regen_max = 0;
   egv_accel_frame.forward = 0;
@@ -258,8 +271,10 @@ int main(void)
   egv_sync_frame.bms = 1;
   egv_sync_frame.var = 1;
 
-  egv_var_frame.current_limit = 2640;
-  egv_var_frame.max_torque_ratio =1000;
+  egv_var_frame.current_limit = 0;
+  //egv_var_frame.current_limit = swap_endianness(egv_var_frame.current_limit);
+  egv_var_frame.max_torque_ratio =0;
+  //egv_var_frame.max_torque_ratio = swap_endianness(egv_var_frame.max_torque_ratio);
   egv_var_frame.motor_command = 0;
   egv_var_frame.regen_limit = 0;
 
@@ -283,7 +298,7 @@ int main(void)
     CAN_FilterTypeDef sFilterConfig;
 
     sFilterConfig.FilterFIFOAssignment=CAN_FILTER_FIFO0; //set fifo assignment
-    sFilterConfig.FilterIdHigh=0x245<<5; //the ID that the filter looks for (switch this for the other microcontroller)
+    sFilterConfig.FilterIdHigh=0x181<<5; //the ID that the filter looks for (switch this for the other microcontroller)
     sFilterConfig.FilterIdLow=0;
     sFilterConfig.FilterMaskIdHigh=0;
     sFilterConfig.FilterMaskIdLow=0;
@@ -310,6 +325,16 @@ int main(void)
 
     diagnostics_print();
     /* USER CODE BEGIN 3 */
+    if(var_stat.status_word == 1075)
+    {
+        var_ready =1;
+        egv_var_frame.current_limit = 200; //2640
+        egv_var_frame.regen_limit =20;
+        //egv_var_frame.current_limit = swap_endianness(egv_var_frame.current_limit);
+        egv_var_frame.max_torque_ratio =1000;
+        egv_accel_frame.footswitch=1;
+        egv_accel_frame.accelerator_set_point=250;
+    }
      HAL_Delay(1000);
 //
 //     printf("%d \n",egv_accel_frame.accelerator_set_point);

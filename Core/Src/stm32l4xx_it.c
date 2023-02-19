@@ -52,11 +52,20 @@
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
 extern CAN_HandleTypeDef hcan1;
 extern TIM_HandleTypeDef htim6;
+typedef struct stat
+{
+    int32_t motor_speed;
+    int16_t motor_torque;
+    int16_t status_word;
+}stat_t;
+extern stat_t var_stat;
+extern uint8_t var_ready;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -209,7 +218,7 @@ void CAN1_RX0_IRQHandler(void)
     if(HAL_CAN_GetRxFifoFillLevel(&hcan1,CAN_RX_FIFO0)!=0)
     {
         HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
-        HAL_CAN_GetRxMessage(&hcan1,0,0,0);
+        HAL_CAN_GetRxMessage(&hcan1,0,0,&var_stat);
     }
     /* USER CODE END CAN1_RX0_IRQn 0 */
   HAL_CAN_IRQHandler(&hcan1);
