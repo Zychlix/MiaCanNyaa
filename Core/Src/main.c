@@ -26,7 +26,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#include <stdio.h>
+#include <string.h>
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -51,7 +52,6 @@ TIM_HandleTypeDef htim6;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
 
 
 
@@ -185,6 +185,18 @@ void HAL_CAN_RxFIFO0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
     //HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
 }
+
+int __io_putchar(int ch)
+{
+    if (ch == '\n') {
+        uint8_t ch2 = '\r';
+        HAL_UART_Transmit(&huart2, &ch2, 1, HAL_MAX_DELAY);
+    }
+
+    HAL_UART_Transmit(&huart2, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
+    return 1;
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -272,13 +284,8 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
      HAL_Delay(1000);
-//      HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
-//      HAL_CAN_AddTxMessage(&hcan1,&frame,"abc",NULL);
-  uint32_t value = HAL_ADC_GetValue(&hadc1);
-      HAL_ADC_Start(&hadc1);
-
-      egv_accel_frame.accelerator_set_point = (uint16_t)value;
-
+     printf("Hello!\n");
+     printf("%f \n",4.5);
 
   }
   /* USER CODE END 3 */

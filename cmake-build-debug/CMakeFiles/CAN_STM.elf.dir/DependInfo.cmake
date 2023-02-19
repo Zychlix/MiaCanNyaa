@@ -31,6 +31,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/michal/CAN_STM/Core/Src/main.c" "CMakeFiles/CAN_STM.elf.dir/Core/Src/main.c.obj" "gcc" "CMakeFiles/CAN_STM.elf.dir/Core/Src/main.c.obj.d"
+  "/home/michal/CAN_STM/Core/Src/mia.c" "CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.obj" "gcc" "CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.obj.d"
   "/home/michal/CAN_STM/Core/Src/stm32l4xx_hal_msp.c" "CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj" "gcc" "CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj.d"
   "/home/michal/CAN_STM/Core/Src/stm32l4xx_it.c" "CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_it.c.obj" "gcc" "CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_it.c.obj.d"
   "/home/michal/CAN_STM/Core/Src/syscalls.c" "CMakeFiles/CAN_STM.elf.dir/Core/Src/syscalls.c.obj" "gcc" "CMakeFiles/CAN_STM.elf.dir/Core/Src/syscalls.c.obj.d"

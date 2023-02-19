@@ -153,6 +153,30 @@ Core/Src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CAN_STM.elf.dir/build.make CMakeFiles/CAN_STM.elf.dir/Core/Src/main.c.s
 .PHONY : Core/Src/main.c.s
 
+Core/Src/mia.obj: Core/Src/mia.c.obj
+.PHONY : Core/Src/mia.obj
+
+# target to build an object file
+Core/Src/mia.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CAN_STM.elf.dir/build.make CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.obj
+.PHONY : Core/Src/mia.c.obj
+
+Core/Src/mia.i: Core/Src/mia.c.i
+.PHONY : Core/Src/mia.i
+
+# target to preprocess a source file
+Core/Src/mia.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CAN_STM.elf.dir/build.make CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.i
+.PHONY : Core/Src/mia.c.i
+
+Core/Src/mia.s: Core/Src/mia.c.s
+.PHONY : Core/Src/mia.s
+
+# target to generate assembly for a file
+Core/Src/mia.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CAN_STM.elf.dir/build.make CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.s
+.PHONY : Core/Src/mia.c.s
+
 Core/Src/stm32l4xx_hal_msp.obj: Core/Src/stm32l4xx_hal_msp.c.obj
 .PHONY : Core/Src/stm32l4xx_hal_msp.obj
 
@@ -821,6 +845,9 @@ help:
 	@echo "... Core/Src/main.obj"
 	@echo "... Core/Src/main.i"
 	@echo "... Core/Src/main.s"
+	@echo "... Core/Src/mia.obj"
+	@echo "... Core/Src/mia.i"
+	@echo "... Core/Src/mia.s"
 	@echo "... Core/Src/stm32l4xx_hal_msp.obj"
 	@echo "... Core/Src/stm32l4xx_hal_msp.i"
 	@echo "... Core/Src/stm32l4xx_hal_msp.s"

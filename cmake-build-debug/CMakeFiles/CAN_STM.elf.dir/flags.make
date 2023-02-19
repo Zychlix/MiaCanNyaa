@@ -7,11 +7,11 @@ ASM_DEFINES = -DDEBUG -DSTM32L432xx -DUSE_HAL_DRIVER
 
 ASM_INCLUDES = -I/home/michal/CAN_STM/Core/Inc -I/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc -I/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I/home/michal/CAN_STM/Drivers/CMSIS/Device/ST/STM32L4xx/Include -I/home/michal/CAN_STM/Drivers/CMSIS/Include
 
-ASM_FLAGS = -g -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -x assembler-with-cpp -Og -g
+ASM_FLAGS = -g -mcpu=cortex-m4 -mthumb -mthumb-interwork -u _printf_float -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -x assembler-with-cpp -Og -g
 
 C_DEFINES = -DDEBUG -DSTM32L432xx -DUSE_HAL_DRIVER
 
 C_INCLUDES = -I/home/michal/CAN_STM/Core/Inc -I/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc -I/home/michal/CAN_STM/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I/home/michal/CAN_STM/Drivers/CMSIS/Device/ST/STM32L4xx/Include -I/home/michal/CAN_STM/Drivers/CMSIS/Include
 
-C_FLAGS = -g -mcpu=cortex-m4 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g -std=gnu11
+C_FLAGS = -g -mcpu=cortex-m4 -mthumb -mthumb-interwork -u _printf_float -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g -std=gnu11
 

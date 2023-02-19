@@ -44,7 +44,38 @@ CMakeFiles/CAN_STM.elf.dir/Core/Src/main.c.obj: ../Core/Src/main.c \
   ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h \
   ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
   ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
-  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h
+  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
+  /usr/arm-none-eabi/include/stdio.h \
+  /usr/arm-none-eabi/include/_ansi.h \
+  /usr/arm-none-eabi/include/newlib.h \
+  /usr/arm-none-eabi/include/sys/config.h \
+  /usr/arm-none-eabi/include/machine/ieeefp.h \
+  /usr/arm-none-eabi/include/sys/cdefs.h \
+  /usr/lib/gcc/arm-none-eabi/12.2.0/include/stdarg.h \
+  /usr/arm-none-eabi/include/sys/reent.h \
+  /usr/arm-none-eabi/include/_ansi.h \
+  /usr/arm-none-eabi/include/sys/_types.h \
+  /usr/arm-none-eabi/include/machine/_types.h \
+  /usr/arm-none-eabi/include/sys/lock.h \
+  /usr/arm-none-eabi/include/sys/types.h \
+  /usr/arm-none-eabi/include/machine/endian.h \
+  /usr/arm-none-eabi/include/machine/_endian.h \
+  /usr/arm-none-eabi/include/sys/select.h \
+  /usr/arm-none-eabi/include/sys/_sigset.h \
+  /usr/arm-none-eabi/include/sys/_timeval.h \
+  /usr/arm-none-eabi/include/sys/timespec.h \
+  /usr/arm-none-eabi/include/sys/_timespec.h \
+  /usr/arm-none-eabi/include/sys/_pthreadtypes.h \
+  /usr/arm-none-eabi/include/sys/sched.h \
+  /usr/arm-none-eabi/include/machine/types.h \
+  /usr/arm-none-eabi/include/sys/stdio.h \
+  /usr/arm-none-eabi/include/string.h \
+  /usr/arm-none-eabi/include/sys/_locale.h \
+  /usr/arm-none-eabi/include/strings.h \
+  /usr/arm-none-eabi/include/sys/string.h
+
+CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.obj: ../Core/Src/mia.c \
+  ../Core/Src/mia.h
 
 CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj: ../Core/Src/stm32l4xx_hal_msp.c \
   ../Core/Inc/main.h \
@@ -1234,7 +1265,13 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 ../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c:
 
-../Core/Src/stm32l4xx_hal_msp.c:
+../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c:
+
+../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c:
+
+../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c:
+
+/usr/arm-none-eabi/include/stdio.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h:
 
@@ -1254,8 +1291,6 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h:
 
-../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c:
-
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio_ex.h:
@@ -1267,10 +1302,6 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h:
 
 /usr/arm-none-eabi/include/sys/lock.h:
-
-../Core/Src/stm32l4xx_it.c:
-
-/usr/arm-none-eabi/include/sys/time.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc_ex.h:
 
@@ -1288,6 +1319,10 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 ../Drivers/CMSIS/Include/mpu_armv7.h:
 
+../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c:
+
+/usr/arm-none-eabi/include/machine/_endian.h:
+
 /usr/lib/gcc/arm-none-eabi/12.2.0/include/stdint.h:
 
 ../Drivers/CMSIS/Include/cmsis_gcc.h:
@@ -1297,6 +1332,10 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h:
 
 /usr/lib/gcc/arm-none-eabi/12.2.0/include/stdarg.h:
+
+/usr/arm-none-eabi/include/sys/_locale.h:
+
+../Drivers/CMSIS/Include/core_cm4.h:
 
 /usr/arm-none-eabi/include/_newlib_version.h:
 
@@ -1310,8 +1349,6 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 /usr/arm-none-eabi/include/machine/types.h:
 
-../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c:
-
 ../Core/Inc/main.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h:
@@ -1319,8 +1356,6 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 /usr/arm-none-eabi/include/sys/signal.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
-
-/usr/arm-none-eabi/include/alloca.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_exti.h:
 
@@ -1336,6 +1371,12 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 ../Core/Inc/stm32l4xx_hal_conf.h:
 
+../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c:
+
+/usr/arm-none-eabi/include/sys/errno.h:
+
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h:
+
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h:
 
 /usr/arm-none-eabi/include/sys/_timeval.h:
@@ -1344,33 +1385,15 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h:
 
+../Core/Src/mia.c:
+
 ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h:
 
-../Core/Inc/stm32l4xx_it.h:
-
-/usr/arm-none-eabi/include/sys/stat.h:
-
-/usr/arm-none-eabi/include/machine/stdlib.h:
-
-/usr/arm-none-eabi/include/sys/config.h:
-
-/usr/arm-none-eabi/include/sys/errno.h:
-
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h:
-
-../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c:
-
 ../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c:
 
 /usr/arm-none-eabi/include/machine/ieeefp.h:
-
-/usr/arm-none-eabi/include/time.h:
-
-/usr/arm-none-eabi/include/signal.h:
-
-/usr/arm-none-eabi/include/sys/select.h:
 
 /usr/arm-none-eabi/include/sys/cdefs.h:
 
@@ -1378,19 +1401,19 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 /usr/arm-none-eabi/include/machine/_types.h:
 
-/usr/arm-none-eabi/include/machine/time.h:
-
 /usr/arm-none-eabi/include/_ansi.h:
 
 /usr/arm-none-eabi/include/sys/types.h:
 
+/usr/arm-none-eabi/include/signal.h:
+
+/usr/arm-none-eabi/include/sys/select.h:
+
+/usr/arm-none-eabi/include/time.h:
+
 /usr/arm-none-eabi/include/sys/_sigset.h:
 
 /usr/arm-none-eabi/include/sys/timespec.h:
-
-../Core/Src/syscalls.c:
-
-/usr/arm-none-eabi/include/sys/_timespec.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c:
 
@@ -1402,17 +1425,43 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 /usr/arm-none-eabi/include/sys/sched.h:
 
-../Drivers/CMSIS/Include/core_cm4.h:
+/usr/arm-none-eabi/include/sys/stdio.h:
 
-/usr/arm-none-eabi/include/sys/_locale.h:
+/usr/arm-none-eabi/include/string.h:
 
-/usr/arm-none-eabi/include/stdio.h:
+/usr/arm-none-eabi/include/strings.h:
+
+../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc_ex.c:
+
+/usr/arm-none-eabi/include/alloca.h:
+
+/usr/arm-none-eabi/include/sys/string.h:
+
+../Core/Src/mia.h:
+
+../Core/Src/stm32l4xx_hal_msp.c:
+
+/usr/arm-none-eabi/include/sys/config.h:
+
+/usr/arm-none-eabi/include/machine/stdlib.h:
+
+../Core/Src/stm32l4xx_it.c:
+
+/usr/arm-none-eabi/include/sys/time.h:
+
+../Core/Inc/stm32l4xx_it.h:
+
+/usr/arm-none-eabi/include/sys/_timespec.h:
+
+../Core/Src/syscalls.c:
+
+/usr/arm-none-eabi/include/sys/stat.h:
+
+/usr/arm-none-eabi/include/machine/time.h:
 
 /usr/arm-none-eabi/include/machine/_default_types.h:
 
 /usr/arm-none-eabi/include/stdlib.h:
-
-/usr/arm-none-eabi/include/sys/stdio.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c:
 
@@ -1426,12 +1475,4 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 ../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c:
 
-/usr/arm-none-eabi/include/machine/_endian.h:
-
-../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c:
-
-../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc_ex.c:
-
 ../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_can.c:
-
-../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c:

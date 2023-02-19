@@ -108,6 +108,12 @@
 		<Unit filename="/home/michal/CAN_STM/Core/Src/main.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>
+		<Unit filename="/home/michal/CAN_STM/Core/Src/mia.c">
+			<Option target="CAN_STM.elf"/>
+		</Unit>
+		<Unit filename="/home/michal/CAN_STM/Core/Src/mia.h">
+			<Option target="CAN_STM.elf"/>
+		</Unit>
 		<Unit filename="/home/michal/CAN_STM/Core/Src/stm32l4xx_hal_msp.c">
 			<Option target="CAN_STM.elf"/>
 		</Unit>

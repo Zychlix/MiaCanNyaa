@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CAN_STM.elf.pdb"
   "CMakeFiles/CAN_STM.elf.dir/Core/Src/main.c.obj"
   "CMakeFiles/CAN_STM.elf.dir/Core/Src/main.c.obj.d"
+  "CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.obj"
+  "CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.obj.d"
   "CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj"
   "CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj.d"
   "CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_it.c.obj"
