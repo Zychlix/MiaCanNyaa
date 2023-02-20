@@ -37,8 +37,8 @@
 #define CAN_EGV_SYNC_ALL_ID 0x80
 #define MIN_THROTTLE 70
 
-#define MIN_RAW_ADC_ACCEL 10
-#define MAX_RAW_ADC_ACCEL 255
+#define MIN_RAW_ADC_ACCEL 30
+#define MAX_RAW_ADC_ACCEL 200
 
 #define CAN_VAR_STAT
 /* USER CODE END PD */
@@ -151,13 +151,12 @@ void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t * frame)
     carrier.StdId = CAN_EGV_CMD_VAR_ID;
     carrier.DLC = sizeof (CAN_EGV_Cmd_VAR_t);
 
-    payload.regen_limit = swap_endianness(    frame->regen_limit);
-    payload.max_torque_ratio = swap_endianness(frame->max_torque_ratio);
-    payload.current_limit = swap_endianness(frame->current_limit);
-    payload.motor_command = 0;
-    payload.motor_command = swap_endianness(frame->current_limit);
-
-    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)&payload,NULL);
+    frame->regen_limit = swap_endianness(    frame->regen_limit);
+    frame->max_torque_ratio = swap_endianness(frame->max_torque_ratio);
+    frame->current_limit = swap_endianness(frame->current_limit);
+    frame->motor_command = 0;
+    frame->motor_command = swap_endianness(frame->current_limit);
+    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)&frame,NULL);
 
 }
 
@@ -169,7 +168,7 @@ uint16_t get_throttle()
 
     if(reading > MIN_RAW_ADC_ACCEL)
     {
-        reading = asym_constraint((reading-MIN_RAW_ADC_ACCEL)*1 + MIN_THROTTLE,MAX_RAW_ADC_ACCEL);
+        reading = asym_constraint((reading-MIN_RAW_ADC_ACCEL)*250/200 + MIN_THROTTLE,MAX_RAW_ADC_ACCEL);
     }
     else
     {
@@ -180,7 +179,7 @@ uint16_t get_throttle()
 
 void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
 {
-    int direction_forward = (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4)== GPIO_PIN_RESET);
+    int direction_forward = (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4)== GPIO_PIN_SET);
 
     uint16_t throttle = get_throttle();
 
@@ -356,13 +355,13 @@ int main(void)
       if(var_stat.status_word == 1075)
     {
         var_ready =1;
-        egv_var_frame.current_limit = 200; //2640
+        egv_var_frame.current_limit = 400; //2640
         egv_var_frame.regen_limit =-20;
         egv_var_frame.max_torque_ratio =1000;
         egv_accel_frame.footswitch=1;
     }
      HAL_Delay(1000);
-//     printf("%d \n",egv_accel_frame.accelerator_set_point);
+     printf("%d \n",egv_accel_frame.accelerator_set_point);
 
   }
   /* USER CODE END 3 */
