@@ -59,7 +59,7 @@ UART_HandleTypeDef huart2;
 
 
 
-uint16_t swap_endianness(uint16_t value)
+uint16_t swap_endianness(uint16_t value) //Zrob implementacje dla inta?
 {
     uint16_t ret_val;
     uint8_t lsb, msb;
@@ -147,6 +147,7 @@ void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t * frame)
     CAN_TxHeaderTypeDef carrier = {0};
 
     CAN_EGV_Cmd_VAR_t payload;
+
     carrier.StdId = CAN_EGV_CMD_VAR_ID;
     carrier.DLC = sizeof (CAN_EGV_Cmd_VAR_t);
 
