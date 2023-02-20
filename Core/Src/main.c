@@ -145,15 +145,18 @@ void can_send_egv_accel_var(CAN_EGV_Accel_VAR_t * frame)
 void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t * frame)
 {
     CAN_TxHeaderTypeDef carrier = {0};
+
+    CAN_EGV_Cmd_VAR_t payload;
     carrier.StdId = CAN_EGV_CMD_VAR_ID;
     carrier.DLC = sizeof (CAN_EGV_Cmd_VAR_t);
 
-    frame->regen_limit = swap_endianness(    frame->regen_limit);
-    frame->max_torque_ratio = swap_endianness(frame->max_torque_ratio);
-    frame->current_limit = swap_endianness(frame->current_limit);
-    frame->motor_command = 0;
-    frame->motor_command = swap_endianness(frame->current_limit);
-    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)&frame,NULL);
+    payload.regen_limit = swap_endianness(    frame->regen_limit);
+    payload.max_torque_ratio = swap_endianness(frame->max_torque_ratio);
+    payload.current_limit = swap_endianness(frame->current_limit);
+    payload.motor_command = 0;
+    payload.motor_command = swap_endianness(frame->current_limit);
+
+    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)&payload,NULL);
 
 }
 
@@ -299,9 +302,7 @@ int main(void)
   egv_sync_frame.status =0xff;
 
   egv_var_frame.current_limit = 0;
-  //egv_var_frame.current_limit = swap_endianness(egv_var_frame.current_limit);
   egv_var_frame.max_torque_ratio =0;
-  //egv_var_frame.max_torque_ratio = swap_endianness(egv_var_frame.max_torque_ratio);
   egv_var_frame.motor_command = 0;
   egv_var_frame.regen_limit = 0;
 
@@ -356,12 +357,10 @@ int main(void)
         var_ready =1;
         egv_var_frame.current_limit = 200; //2640
         egv_var_frame.regen_limit =-20;
-        //egv_var_frame.current_limit = swap_endianness(egv_var_frame.current_limit);
         egv_var_frame.max_torque_ratio =1000;
         egv_accel_frame.footswitch=1;
     }
      HAL_Delay(1000);
-//
 //     printf("%d \n",egv_accel_frame.accelerator_set_point);
 
   }
