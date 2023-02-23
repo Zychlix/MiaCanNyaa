@@ -3,3 +3,16 @@
 //
 
 #include "mia.h"
+
+
+void car_toggle_gear(car_t * car)
+{
+    if(car->in_reverse)
+    {
+        car->in_reverse = 0;
+    }
+    else
+    {
+        car->in_reverse = 1;
+    }
+}

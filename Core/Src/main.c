@@ -28,18 +28,12 @@
 /* USER CODE BEGIN PTD */
 #include <stdio.h>
 #include <string.h>
+#include "mia.h"
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define CAN_EGV_ACCEL_VAR_ID 0x201
-#define CAN_EGV_CMD_VAR_ID 0x301
-#define CAN_EGV_SYNC_ALL_ID 0x80
-#define CAN_BMS_CHA_ID 0x622
-#define MIN_THROTTLE 70
 
-#define MIN_RAW_ADC_ACCEL 30
-#define MAX_RAW_ADC_ACCEL 200
 
 #define CAN_VAR_STAT
 /* USER CODE END PD */
@@ -55,6 +49,8 @@ CAN_HandleTypeDef hcan1;
 TIM_HandleTypeDef htim6;
 
 UART_HandleTypeDef huart2;
+
+
 
 /* USER CODE BEGIN PV */
 
@@ -134,6 +130,7 @@ uint8_t status;
 
 } CAN_EGV_SYNC_ALL_t;
 
+
 void can_send_egv_sync_all(CAN_EGV_SYNC_ALL_t * frame)
 {
     CAN_TxHeaderTypeDef carrier = {0};
@@ -206,9 +203,12 @@ uint16_t get_throttle()
     return (uint16_t)reading;
 }
 
+volatile car_t mia;
+
 void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
 {
-    int direction_forward = (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4)== GPIO_PIN_SET);
+    //int direction_forward = (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4)== GPIO_PIN_SET);
+    int direction_forward = !mia.in_reverse;
 
     uint16_t throttle = get_throttle();
 
@@ -237,6 +237,7 @@ void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
         frame->accelerator_set_point = 0;
     }
 }
+
 volatile CAN_EGV_Accel_VAR_t egv_accel_frame ={0};
 
 volatile CAN_EGV_SYNC_ALL_t egv_sync_frame ={0};
@@ -323,6 +324,7 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 
+  mia.in_reverse = 0;
   egv_accel_frame;
 
   egv_accel_frame.accelerator_set_point = 0;
@@ -394,9 +396,12 @@ int main(void)
         egv_var_frame.regen_limit =-20;
         egv_var_frame.max_torque_ratio =1000;
         egv_accel_frame.footswitch=1;
-
-
     }
+
+      if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4)== GPIO_PIN_RESET)
+      {
+          car_toggle_gear(&mia);
+      }
      HAL_Delay(1000);
       can_bms_cha(&bms_cha_frame);
       printf("%d \n",egv_accel_frame.accelerator_set_point);
