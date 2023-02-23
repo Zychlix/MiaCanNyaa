@@ -35,6 +35,7 @@
 #define CAN_EGV_ACCEL_VAR_ID 0x201
 #define CAN_EGV_CMD_VAR_ID 0x301
 #define CAN_EGV_SYNC_ALL_ID 0x80
+#define CAN_BMS_CHA_ID 0x622
 #define MIN_THROTTLE 70
 
 #define MIN_RAW_ADC_ACCEL 30
@@ -117,6 +118,16 @@ typedef struct __attribute__((__packed__))  CAN_EGV_Cmd_VAR
 
 } CAN_EGV_Cmd_VAR_t;
 
+typedef struct __attribute__((__packed__))  CAN_BMS_CHA
+{
+    int16_t charging_current; //0 to 500
+    int16_t max_voltage;
+    uint8_t status;
+
+} CAN_BMS_CHA_t;
+
+
+
 typedef struct CAN_EGV_SYNC_ALL
 {
 uint8_t status;
@@ -158,6 +169,24 @@ void can_send_egv_cmd_var(CAN_EGV_Cmd_VAR_t * frame)
     frame->motor_command = swap_endianness(frame->current_limit);
     HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)&frame,NULL);
 
+}
+
+
+void can_bms_cha(CAN_BMS_CHA_t * frame)
+{
+    CAN_TxHeaderTypeDef carrier = {0};
+
+    carrier.StdId = CAN_BMS_CHA_ID;
+    carrier.DLC = 6;
+    uint8_t crap[6];
+    crap[0]=0xc8;
+    crap[1]=0x00;
+    crap[2]=0x88;
+    crap[3]=0x13;
+    crap[4]=0x03;
+    crap[5]=0x00;
+    //frame->accelerator_set_point = sw,ap_endianness(frame->accelerator_set_point);
+    HAL_CAN_AddTxMessage(&hcan1,&carrier,(char *)frame,NULL);
 }
 
 uint16_t get_throttle()
@@ -214,6 +243,8 @@ volatile CAN_EGV_SYNC_ALL_t egv_sync_frame ={0};
 
 volatile CAN_EGV_Cmd_VAR_t egv_var_frame ={0};
 
+volatile CAN_BMS_CHA_t bms_cha_frame = {0};
+
 /* Private user code ---------------------------------------------------------*/
 stat_t var_stat;
 
@@ -247,6 +278,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
     can_send_egv_sync_all(&egv_sync_frame);
     can_send_egv_accel_var(&egv_accel_frame);
     can_send_egv_cmd_var(&can_send_egv_cmd_var);
+
 
 }
 
@@ -306,6 +338,9 @@ int main(void)
   egv_var_frame.motor_command = 0;
   egv_var_frame.regen_limit = 0;
 
+  bms_cha_frame.max_voltage = 8000;
+  bms_cha_frame.charging_current = 550;
+  bms_cha_frame.status = 1+2;
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -359,9 +394,12 @@ int main(void)
         egv_var_frame.regen_limit =-20;
         egv_var_frame.max_torque_ratio =1000;
         egv_accel_frame.footswitch=1;
+
+
     }
      HAL_Delay(1000);
-     printf("%d \n",egv_accel_frame.accelerator_set_point);
+      can_bms_cha(&bms_cha_frame);
+      printf("%d \n",egv_accel_frame.accelerator_set_point);
 
   }
   /* USER CODE END 3 */
