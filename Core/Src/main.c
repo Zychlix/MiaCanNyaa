@@ -83,8 +83,6 @@ uint16_t asym_constraint(uint16_t value, uint16_t max)
 
 /* USER CODE END PM */
 
-volatile uint8_t var_ready = 0;
-
 typedef struct __attribute__((__packed__)) stat
 {
     int32_t motor_speed;
@@ -212,7 +210,7 @@ void update_accel_pedal(CAN_EGV_Accel_VAR_t * frame)
 
     uint16_t throttle = get_throttle();
 
-    if(var_ready && throttle >= (MIN_THROTTLE) )
+    if(mia.var_ready && throttle >= (MIN_THROTTLE) )
     {
         frame->accelerator_set_point = throttle;
         frame->footswitch = 1; //?
@@ -391,7 +389,7 @@ int main(void)
       diagnostics_print();
       if(var_stat.status_word == 1075)
     {
-        var_ready =1;
+        mia.var_ready =1;
         egv_var_frame.current_limit = 400; //2640
         egv_var_frame.regen_limit =-20;
         egv_var_frame.max_torque_ratio =1000;

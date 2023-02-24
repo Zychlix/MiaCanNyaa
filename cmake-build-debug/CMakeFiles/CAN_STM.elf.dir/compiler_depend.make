@@ -61,10 +61,18 @@ CMakeFiles/CAN_STM.elf.dir/Core/Src/main.c.obj: /home/zychlix/MiaCanNyaa/Core/Sr
   /usr/arm-none-eabi/include/string.h \
   /usr/arm-none-eabi/include/sys/_locale.h \
   /usr/arm-none-eabi/include/strings.h \
-  /usr/arm-none-eabi/include/sys/string.h
+  /usr/arm-none-eabi/include/sys/string.h \
+  /home/zychlix/MiaCanNyaa/Core/Inc/mia.h
 
 CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.obj: /home/zychlix/MiaCanNyaa/Core/Src/mia.c \
-  /home/zychlix/MiaCanNyaa/Core/Src/mia.h
+  /home/zychlix/MiaCanNyaa/Core/Inc/mia.h \
+  /usr/lib/gcc/arm-none-eabi/12.2.1/include/stdint.h \
+  /usr/arm-none-eabi/include/stdint.h \
+  /usr/arm-none-eabi/include/machine/_default_types.h \
+  /usr/arm-none-eabi/include/sys/features.h \
+  /usr/arm-none-eabi/include/_newlib_version.h \
+  /usr/arm-none-eabi/include/sys/_intsup.h \
+  /usr/arm-none-eabi/include/sys/_stdint.h
 
 CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj: /home/zychlix/MiaCanNyaa/Core/Src/stm32l4xx_hal_msp.c \
   /home/zychlix/MiaCanNyaa/Core/Inc/main.h \
@@ -1300,15 +1308,17 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 
 /usr/arm-none-eabi/include/sys/stat.h:
 
-/usr/arm-none-eabi/include/alloca.h:
-
-/home/zychlix/MiaCanNyaa/Core/Src/syscalls.c:
-
 /home/zychlix/MiaCanNyaa/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc_ex.c:
 
 /home/zychlix/MiaCanNyaa/Core/Inc/stm32l4xx_it.h:
 
 /home/zychlix/MiaCanNyaa/Core/Src/mia.c:
+
+/usr/arm-none-eabi/include/alloca.h:
+
+/home/zychlix/MiaCanNyaa/Core/Src/syscalls.c:
+
+/home/zychlix/MiaCanNyaa/Core/Inc/mia.h:
 
 /usr/arm-none-eabi/include/sys/string.h:
 
@@ -1351,8 +1361,6 @@ CMakeFiles/CAN_STM.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_e
 /usr/arm-none-eabi/include/sys/_types.h:
 
 /home/zychlix/MiaCanNyaa/Drivers/CMSIS/Include/cmsis_version.h:
-
-/home/zychlix/MiaCanNyaa/Core/Src/mia.h:
 
 /usr/arm-none-eabi/include/sys/_stdint.h:
 

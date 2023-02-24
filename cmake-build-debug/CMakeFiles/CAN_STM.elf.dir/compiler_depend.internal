@@ -63,10 +63,18 @@ CMakeFiles/CAN_STM.elf.dir/Core/Src/main.c.obj
  /usr/arm-none-eabi/include/sys/_locale.h
  /usr/arm-none-eabi/include/strings.h
  /usr/arm-none-eabi/include/sys/string.h
+ /home/zychlix/MiaCanNyaa/Core/Inc/mia.h
 
 CMakeFiles/CAN_STM.elf.dir/Core/Src/mia.c.obj
  /home/zychlix/MiaCanNyaa/Core/Src/mia.c
- /home/zychlix/MiaCanNyaa/Core/Src/mia.h
+ /home/zychlix/MiaCanNyaa/Core/Inc/mia.h
+ /usr/lib/gcc/arm-none-eabi/12.2.1/include/stdint.h
+ /usr/arm-none-eabi/include/stdint.h
+ /usr/arm-none-eabi/include/machine/_default_types.h
+ /usr/arm-none-eabi/include/sys/features.h
+ /usr/arm-none-eabi/include/_newlib_version.h
+ /usr/arm-none-eabi/include/sys/_intsup.h
+ /usr/arm-none-eabi/include/sys/_stdint.h
 
 CMakeFiles/CAN_STM.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj
  /home/zychlix/MiaCanNyaa/Core/Src/stm32l4xx_hal_msp.c

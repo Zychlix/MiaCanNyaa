@@ -58,4 +58,5 @@ CMakeFiles/CAN_STM.elf.dir/Core/Src/main.c.obj: \
  /usr/arm-none-eabi/include/string.h \
  /usr/arm-none-eabi/include/sys/_locale.h \
  /usr/arm-none-eabi/include/strings.h \
- /usr/arm-none-eabi/include/sys/string.h
+ /usr/arm-none-eabi/include/sys/string.h \
+ /home/zychlix/MiaCanNyaa/Core/Inc/mia.h

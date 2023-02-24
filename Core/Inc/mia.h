@@ -18,6 +18,7 @@
 typedef struct car
 {
     uint8_t in_reverse;
+    uint8_t var_ready;
 
 } car_t;
 
