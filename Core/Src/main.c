@@ -401,6 +401,7 @@ int main(void)
           car_toggle_gear(&mia);
       }
      HAL_Delay(1000);
+      HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
       can_bms_cha(&bms_cha_frame);
       printf("%d \n",egv_accel_frame.accelerator_set_point);
 
