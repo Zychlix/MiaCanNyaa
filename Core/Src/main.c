@@ -323,6 +323,7 @@ int main(void)
   /* USER CODE BEGIN SysInit */
 
   mia.in_reverse = 0;
+  mia.reverse_button_pressed=0;
   egv_accel_frame;
 
   egv_accel_frame.accelerator_set_point = 0;
@@ -397,10 +398,20 @@ int main(void)
         egv_var_frame.max_torque_ratio =1000;
         egv_accel_frame.footswitch=1;
     }
+      uint8_t button_state = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4)== GPIO_PIN_RESET;
 
-      if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4)== GPIO_PIN_RESET)
+      if(mia.reverse_button_pressed == 0 && button_state == 1)
       {
           car_toggle_gear(&mia);
+      }
+
+      if(button_state)
+      {
+          mia.reverse_button_pressed = 1;
+      }
+      else
+      {
+          mia.reverse_button_pressed =0;
       }
      HAL_Delay(1000);
       HAL_GPIO_TogglePin(LD3_GPIO_Port,LD3_Pin);
